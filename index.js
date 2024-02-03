@@ -23,12 +23,16 @@ const app = express();
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   limit: 100,
-  standardHeaders: 'draft-7',
-  legacyHeaders: false,
+  // standardHeaders: 'draft-7',
+  // legacyHeaders: false,
 })
 app.use(limiter)
 app.use(hpp())
-app.use(helmet())
+app.use(helmet.contentSecurityPolicy({
+  directives: {
+    scriptSrc: scriptSources,
+  },
+}))
 app.use(cookieParser())
 app.use(express.json())
 app.use(express.static("dist"))
