@@ -10,7 +10,8 @@ import adminRoute from "./routes/adminRoutes.js";
 import rateLimit from "express-rate-limit";
 import hpp from "hpp";
 import helmet from "helmet";
-
+import path from "path";
+const __dirname = path.resolve()
 import mongoose from "mongoose";
 import {
   adminProtectedRoute,
@@ -49,7 +50,8 @@ app.use("/api/admin", adminProtectedRoute, adminRoute)
 app.use("/api/employee", employeeProtectedRoute, employeeRoute);
 
 app.use("*", (req, res) => {
-  res.status(404).json({ message: "resource not found" });
+  res.sendFile(path.join(__dirname, "dist", "index.html"))
+  // res.status(404).json({ message: "resource not found" });
 });
 app.use((err, req, res, next) => {
   res.status(500).json({ message: err.message || "something went wrong" });
