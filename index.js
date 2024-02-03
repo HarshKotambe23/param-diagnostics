@@ -29,9 +29,7 @@ const limiter = rateLimit({
 app.use(limiter)
 app.use(hpp())
 app.use(helmet.contentSecurityPolicy({
-  directives: {
-    scriptSrc: scriptSources,
-  },
+  contentSecurityPolicy: false
 }))
 app.use(cookieParser())
 app.use(express.json())
