@@ -22,8 +22,8 @@ mongoose.connect(process.env.MONGO_URL);
 const app = express();
 
 const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000,
-  limit: 100,
+  windowMs: 1 * 60 * 1000,
+  limit: 10000,
   // standardHeaders: 'draft-7',
   // legacyHeaders: false,
 })
