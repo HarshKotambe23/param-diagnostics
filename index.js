@@ -21,14 +21,14 @@ mongoose.connect(process.env.MONGO_URL);
 
 const app = express();
 
-const limiter = rateLimit({
-  windowMs: 1 * 60 * 1000,
-  limit: 10000,
-  // standardHeaders: 'draft-7',
-  // legacyHeaders: false,
-})
-app.use(limiter)
-// app.use(hpp())
+// const limiter = rateLimit({
+//   windowMs: 1 * 60 * 1000,
+//   limit: 10000,
+//   // standardHeaders: 'draft-7',
+//   // legacyHeaders: false,
+// })
+// app.use(limiter)
+// // app.use(hpp())
 // app.use(helmet.contentSecurityPolicy({
 //   contentSecurityPolicy: false
 // }))
