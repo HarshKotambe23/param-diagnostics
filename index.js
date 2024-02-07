@@ -21,24 +21,24 @@ mongoose.connect(process.env.MONGO_URL);
 
 const app = express();
 
-// const limiter = rateLimit({
-//   windowMs: 1 * 60 * 1000,
-//   limit: 10000,
-//   // standardHeaders: 'draft-7',
-//   // legacyHeaders: false,
-// })
-// app.use(limiter)
-// // app.use(hpp())
-// app.use(helmet.contentSecurityPolicy({
-//   contentSecurityPolicy: false
-// }))
+const limiter = rateLimit({
+  windowMs: 1 * 60 * 1000,
+  limit: 10000,
+  // standardHeaders: 'draft-7',
+  // legacyHeaders: false,
+})
+app.use(limiter)
+// app.use(hpp())
+app.use(helmet.contentSecurityPolicy({
+  contentSecurityPolicy: false
+}))
 app.use(cookieParser())
 app.use(express.json())
 app.use(express.static("dist"))
 app.use(express.static("uploads"))
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "https://param-diagnostics.onrender.com",
     credentials: true,
   })
 )
