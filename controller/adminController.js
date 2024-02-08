@@ -291,6 +291,14 @@ export const deleteQrCode = asyncHandler(async (req, res) => {
 
     });
 });
+export const getAllQrCodesAdmin = asyncHandler(async (req, res) => {
+    console.log(req.userId);
+    const result = await QrCode.find()
+    res.status(200).json({
+        message: "QR Code Fetch Successs",
+        result
+    })
+})
 export const addQrCode = asyncHandler(async (req, res) => {
     qrUpload(req, res, async (err) => {
         if (err) {
@@ -298,7 +306,7 @@ export const addQrCode = asyncHandler(async (req, res) => {
                 .status(500)
                 .json({ error: err.message || "Image Upload ERROR" });
         }
-        await QrCode.create({ name: req.body.name, image: req.file.filename })
+        await QrCode.create({ name: req.body.name, qr: req.file.filename })
         res.status(200).json({ message: "Image Upload successful" })
 
     });

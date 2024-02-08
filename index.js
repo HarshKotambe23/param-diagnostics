@@ -39,7 +39,8 @@ app.use(express.static("uploads"))
 app.use(express.static("qrUpload"))
 app.use(
   cors({
-    origin: "https://param-diagnostics.onrender.com",
+    origin: "http://localhost:5173",
+    // origin: "https://param-diagnostics.onrender.com",
     credentials: true,
   })
 )

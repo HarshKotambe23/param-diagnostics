@@ -5,7 +5,7 @@ const qrCodeSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    image: {
+    qr: {
         type: String,
         required: true
     }

@@ -19,6 +19,7 @@ import {
     adminUpdatePatient,
     deleteQrCode,
     deleteTestFieldAdmin,
+    getAllQrCodesAdmin,
     getAllTestFieldAdmin,
     updateTestFieldAdmin
 } from "../controller/adminController.js"
@@ -52,7 +53,8 @@ router
     .delete("/testField/remove/:id", deleteTestFieldAdmin)
 
 
+    .get("/qr", getAllQrCodesAdmin)
     .post("/qr-add", addQrCode)
-    .delete("/qr-delete", deleteQrCode)
+    .delete("/qr-delete/:id", deleteQrCode)
 
 export default router
