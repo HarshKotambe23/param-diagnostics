@@ -3,6 +3,7 @@ import Patient from "../model/Patient.js";
 import imageUpload from "../utils/upload.js";
 import Test from "../model/Test.js";
 import Doctor from "../model/Doctor.js";
+import QrCode from "../model/QrCode.js";
 
 export const getAllPatients = asyncHandler(async (req, res) => {
   console.log("hello");
@@ -94,6 +95,20 @@ export const getAllDoctor = async (req, res) => {
   } catch (error) {
     res.status(200).json({
       error: error.message || "Doctor fetch Error",
+    });
+  }
+};
+export const getAllQr = async (req, res) => {
+  try {
+    const result = await QrCode.find();
+
+    res.status(200).json({
+      message: "QR Fetch Successs",
+      result,
+    });
+  } catch (error) {
+    res.status(200).json({
+      error: error.message || "QR fetch Error",
     });
   }
 };

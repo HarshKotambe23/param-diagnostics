@@ -5,6 +5,7 @@ import {
     deletePatient,
     getAllDoctor,
     getAllPatients,
+    getAllQr,
     getAllTest,
     updatePatient
 } from "../controller/employeeController.js"
@@ -19,5 +20,6 @@ router
     .delete("/delete-patient/:id", deletePatient)
     .get("/tests", getAllTest)
     .get("/doctors", getAllDoctor)
+    .get("/qr", getAllQr)
 
 export default router
