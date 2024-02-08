@@ -283,6 +283,14 @@ export const deleteTestFieldAdmin = asyncHandler(async (req, res) => {
     })
 })
 
+export const deleteQrCode = asyncHandler(async (req, res) => {
+    qrUpload(req, res, async (err) => {
+        const { id } = req.params
+        await QrCode.findByIdAndDelete(id)
+        res.status(200).json({ message: "Image Delete successful" })
+
+    });
+});
 export const addQrCode = asyncHandler(async (req, res) => {
     qrUpload(req, res, async (err) => {
         if (err) {

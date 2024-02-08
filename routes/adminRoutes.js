@@ -17,6 +17,7 @@ import {
     adminToggleEmployee,
     adminUpdateEmployeePassword,
     adminUpdatePatient,
+    deleteQrCode,
     deleteTestFieldAdmin,
     getAllTestFieldAdmin,
     updateTestFieldAdmin
@@ -52,5 +53,6 @@ router
 
 
     .post("/qr-add", addQrCode)
+    .delete("/qr-delete", deleteQrCode)
 
 export default router
