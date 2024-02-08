@@ -1,6 +1,7 @@
 
 import { Router } from "express"
 import {
+    addQrCode,
     addTestFieldAdmin,
     adminAddDoctor,
     adminAddTest,
@@ -48,5 +49,8 @@ router
     .post("/testField/add", addTestFieldAdmin)
     .put("/testField/update/:id", updateTestFieldAdmin)
     .delete("/testField/remove/:id", deleteTestFieldAdmin)
+
+
+    .post("/qr-add", addQrCode)
 
 export default router

@@ -35,6 +35,7 @@ export const adminProtectedRoute = async (req, res, next) => {
             if (err) {
                 return res.status(401).json({ error: "JWT ERROR" })
             }
+            console.log(decoded.userId)
             const result = await Employee.findById(decoded.userId)
             if (result.role !== "admin") {
                 return res.status(401).json({ error: "admin only route" })

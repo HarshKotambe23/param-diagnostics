@@ -7,6 +7,8 @@ import Doctor from "../model/Doctor.js"
 import TestFields from "../model/TestFields.js"
 import asyncHandler from "express-async-handler"
 import sendEmail from "../utils/email.js"
+import QrCode from "../model/QrCode.js"
+import qrUpload from "../utils/qrUpload.js"
 
 
 export const adminGetAllPatients = async (req, res) => {
@@ -280,3 +282,16 @@ export const deleteTestFieldAdmin = asyncHandler(async (req, res) => {
         message: "TestFields Delete Successs",
     })
 })
+
+export const addQrCode = asyncHandler(async (req, res) => {
+    qrUpload(req, res, async (err) => {
+        if (err) {
+            return res
+                .status(500)
+                .json({ error: err.message || "Image Upload ERROR" });
+        }
+        await QrCode.create({ name: req.body.name, image: req.file.filename })
+        res.status(200).json({ message: "Image Upload successful" })
+
+    });
+});

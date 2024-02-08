@@ -36,8 +36,10 @@ app.use(cookieParser())
 app.use(express.json())
 app.use(express.static("dist"))
 app.use(express.static("uploads"))
+app.use(express.static("qrUpload"))
 app.use(
   cors({
+    origin: "*",
     origin: "https://param-diagnostics.onrender.com",
     credentials: true,
   })
