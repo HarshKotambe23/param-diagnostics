@@ -27,7 +27,7 @@ const limiter = rateLimit({
   // standardHeaders: 'draft-7',
   // legacyHeaders: false,
 })
-app.use(limiter)
+// app.use(limiter)
 // app.use(hpp())
 // app.use(helmet.contentSecurityPolicy({
 //   contentSecurityPolicy: false
