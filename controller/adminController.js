@@ -39,7 +39,7 @@ export const adminGetAllPatientFeilds = async (req, res) => {
     }
 }
 
-
+// =================================================================================================
 export const adminGetAllEmployees = async (req, res) => {
     try {
         const result = await Employee.find({ role: "emp" }, { _id: 1, name: 1, email: 1, active: 1 })
@@ -136,8 +136,7 @@ export const adminUpdateEmployeePassword = async (req, res) => {
     }
 }
 
-
-
+// =================================================================================================
 export const adminUpdatePatient = async (req, res) => {
     try {
         await Patient.findByIdAndUpdate(req.body._id, req.body)
@@ -152,6 +151,22 @@ export const adminUpdatePatient = async (req, res) => {
     }
 }
 
+export const adminDeletePatient = async (req, res) => {
+    try {
+        const { id } = req.params
+        await Patient.findByIdAndDelete(id)
+
+        res.status(200).json({
+            message: "Patient Update Successs"
+        })
+    } catch (error) {
+        res.status(200).json({
+            error: error.message || "Patient Update Error",
+        })
+    }
+}
+
+// =================================================================================================
 
 export const adminAddTest = async (req, res) => {
     try {
@@ -204,7 +219,7 @@ export const adminGetAllTest = async (req, res) => {
     }
 }
 
-
+// =================================================================================================
 
 export const adminAddDoctor = async (req, res) => {
     try {
@@ -248,7 +263,7 @@ export const adminGetAllDoctor = async (req, res) => {
     }
 }
 
-
+// =================================================================================================
 
 
 export const getAllTestFieldAdmin = asyncHandler(async (req, res) => {
@@ -283,6 +298,8 @@ export const deleteTestFieldAdmin = asyncHandler(async (req, res) => {
     })
 })
 
+// =================================================================================================
+
 export const deleteQrCode = asyncHandler(async (req, res) => {
     qrUpload(req, res, async (err) => {
         const { id } = req.params
@@ -311,3 +328,4 @@ export const addQrCode = asyncHandler(async (req, res) => {
 
     });
 });
+// =================================================================================================

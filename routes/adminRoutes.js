@@ -7,6 +7,7 @@ import {
     adminAddTest,
     adminDeleteDoctor,
     adminDeleteEmployee,
+    adminDeletePatient,
     adminDeleteTest,
     adminGetAllDoctor,
     adminGetAllEmployees,
@@ -37,6 +38,7 @@ router
 
 
     .put("/patient/update", adminUpdatePatient)
+    .delete("/patient/delete/:id", adminDeletePatient)
 
     .get("/test", adminGetAllTest)
     .post("/test/add", adminAddTest)
